@@ -21,6 +21,7 @@ if (!ENV || ![`qa`, `dev`, `qaApi`, `devApi`].includes(ENV)) {
  */
 const config: PlaywrightTestConfig = {
   testDir: './tests',
+  globalSetup: `./global-setup`,
   /* Maximum time one test can run for. */
   timeout: 120000,
   expect: {
@@ -58,6 +59,7 @@ const config: PlaywrightTestConfig = {
       
       use: {
         browserName: `chromium`,
+        storageState: 'storage-state.json',
         baseURL: testConfig[process.env.ENV],
         headless: false,
         viewport: { width: 1500, height: 730 },
