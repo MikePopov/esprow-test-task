@@ -26,6 +26,13 @@ export class WebActions{
     expect(textValue.trim()).toBe(text);
   }
 
+  async selectOptionFromDropdown(locator: string, option: RegExp): Promise<void> {
+    const selectDropDownLocator = await this.page.$(locator);
+    selectDropDownLocator.click();
+    const options = await this.page.locator(`[class="sc-LzLtM kjUByV"]`)
+    await options.locator(':scope', { hasText: option }).click();
+  }
+
   // async waitForPageNavigation(event: string): Promise<void> {
   //   switch (event.toLowerCase()) {
   //       case `networkidle`:

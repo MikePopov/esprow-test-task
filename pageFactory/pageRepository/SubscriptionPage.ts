@@ -16,6 +16,10 @@ export class SubscriptonPage extends SubscriptonPageObject{
   async verifyAddExchangeButton(): Promise<void> {
       await webActions.verifyElementText(SubscriptonPageObject.ADD_EXCHAGE_BTN, 'Add Exchange');
   }
+
+  async clickOnAddExchange(): Promise<void> {
+    await webActions.clickElement(SubscriptonPageObject.ADD_EXCHAGE_BTN);
+  }
   
   async navigateToURL(): Promise<void> {
     await webActions.navigateToUrl('/app/subscription');
