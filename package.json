@@ -1,0 +1,33 @@
+{
+	"name": "esprow-test-task",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "npx playwright test",
+		"test:dev": "npx cross-env ENV=dev npm run test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MikePopov/esprow-test-task.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MikePopov/esprow-test-task/issues"
+	},
+	"homepage": "https://github.com/MikePopov/esprow-test-task#readme",
+	"dependencies": {
+		"@types/adm-zip": "^0.5.0",
+		"@types/crypto-js": "^4.1.1",
+		"@typescript-eslint/eslint-plugin": "^5.37.0",
+		"@typescript-eslint/parser": "^5.37.0",
+		"eslint": "^8.23.1",
+		"eslint-plugin-import": "^2.26.0",
+		"typescript": "^4.8.3",
+		"cross-env": "^7.0.3"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.26.1"
+	}
+}
