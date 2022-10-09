@@ -59,8 +59,7 @@ test('Interruption add Exchange', async ({ subscriptionPage, addExchangePopup })
   await addExchangePopup.verifyFieldAreEmpty();
 })
 
-test('Decrease number of sessions', async ({ subscriptionPage, addExchangePopup, 
-  cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
+test('Decrease number of sessions', async ({ subscriptionPage, addExchangePopup }) => {
   const exchangeData: Exchange = {
     protocolType: /FIX 4.2/,
     protocolCost: 50,
@@ -80,5 +79,24 @@ test('Decrease number of sessions', async ({ subscriptionPage, addExchangePopup,
   await addExchangePopup.verifySessionsCost(sessionCost);
   await addExchangePopup.verifyTotalCost(exchangeData.protocolCost + sessionCost);
 })
+
+test('Change protocol type', async ({ subscriptionPage, addExchangePopup }) => {
+  const exchangeData: Exchange = {
+    protocolType: /FIX 4.2/,
+    protocolCost: 50,
+    numberOfSessions: 1,
+    sessionCost: 10,
+  }
+
+  await subscriptionPage.navigateToURL();
+  await subscriptionPage.clickOnAddExchange();
+  await addExchangePopup.selectProtocolType(exchangeData.protocolType);
+  await addExchangePopup.selectProtocolType(/FIX 4.3/);
+  await addExchangePopup.verifyProtocolCost(exchangeData.protocolCost);
+  await addExchangePopup.verifyTotalCost(exchangeData.protocolCost);
+ 
+})
+
+
 
 
