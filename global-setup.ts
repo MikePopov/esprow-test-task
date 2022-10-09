@@ -10,7 +10,7 @@ async function globalSetup(config: FullConfig): Promise<void> {
   const loginPage = new LoginPage(page);
   const subscriptionPage = new SubscriptonPage(page);
   await loginPage.loginToApplication();
-  await subscriptionPage.verifyAddExchangeButton();
+  await subscriptionPage.verifyMainMenu();
   await page.context().storageState({ path: 'storage-state.json' });
   await browser.close();
 }

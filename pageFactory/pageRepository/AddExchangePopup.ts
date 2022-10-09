@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { AddExchangePopupObjects } from "@objects/AddExchangePopupObjeccts";
+import { AddExchangePopupObjects } from "@objects/AddExchangePopupObjects";
 import { expect, Page } from "@playwright/test";
 import { Exchange } from "../../lib/types";
 

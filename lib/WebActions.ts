@@ -26,9 +26,14 @@ export class WebActions{
     expect(textValue.trim()).toBe(text);
   }
 
-  async verifyElementContainsText(locator: string, text: string): Promise<void> {
+  async verifyElementContainsText(locator: string, text: string|RegExp): Promise<void> {
     await expect(this.page.locator(locator)).toContainText(text);
-}
+  }
+
+  async verifyElementIsDisplayed(locator: string, errorMessage: string): Promise<void> {
+    await this.page.waitForSelector(locator, { state: `visible`, timeout: waitForElement })
+        .catch(() => { throw new Error(`${errorMessage}`); });
+  }
 
   async selectOptionFromDropdown(locator: string, option: RegExp): Promise<void> {
     const selectDropDownLocator = await this.page.$(locator);
@@ -37,16 +42,16 @@ export class WebActions{
     await options.locator(':scope', { hasText: option }).click();
   }
 
-  // async waitForPageNavigation(event: string): Promise<void> {
-  //   switch (event.toLowerCase()) {
-  //       case `networkidle`:
-  //           await this.page.waitForNavigation({ waitUntil: `networkidle`, timeout: waitForElement });
-  //           break;
-  //       case `load`:
-  //           await this.page.waitForNavigation({ waitUntil: `load`, timeout: waitForElement });
-  //           break;
-  //       case `domcontentloaded`:
-  //           await this.page.waitForNavigation({ waitUntil: `domcontentloaded`, timeout: waitForElement });
-  //   }
-  // }
+  async waitForPageNavigation(event: string): Promise<void> {
+    switch (event.toLowerCase()) {
+        case `networkidle`:
+            await this.page.waitForNavigation({ waitUntil: `networkidle`, timeout: waitForElement });
+            break;
+        case `load`:
+            await this.page.waitForNavigation({ waitUntil: `load`, timeout: waitForElement });
+            break;
+        case `domcontentloaded`:
+            await this.page.waitForNavigation({ waitUntil: `domcontentloaded`, timeout: waitForElement });
+    }
+  }
 }
