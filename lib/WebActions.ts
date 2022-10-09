@@ -34,6 +34,10 @@ export class WebActions{
     await expect(this.page.locator(locator)).toContainText(text);
   }
 
+  async verifyElementNotContainsText(locator: string, text: string|RegExp): Promise<void> {
+    await expect(this.page.locator(locator)).not.toContainText(text);
+  }
+
   async verifyElementIsDisplayed(locator: string, errorMessage: string): Promise<void> {
     await this.page.waitForSelector(locator, { state: `visible`, timeout: waitForElement })
         .catch(() => { throw new Error(`${errorMessage}`); });

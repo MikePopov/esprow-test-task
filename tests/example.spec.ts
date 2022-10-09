@@ -39,8 +39,7 @@ test('Add and Subscribe new exchange', async ({ subscriptionPage, addExchangePop
   await subscriptionPage.verifyExchange(true);
 })
 
-test.only('Interruption add Exchange', async ({ subscriptionPage, addExchangePopup, 
-  cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
+test('Interruption add Exchange', async ({ subscriptionPage, addExchangePopup }) => {
   const exchangeData: Exchange = {
     protocolType: /FIX 4.2/,
     protocolCost: 50,
@@ -55,5 +54,31 @@ test.only('Interruption add Exchange', async ({ subscriptionPage, addExchangePop
   await addExchangePopup.clickCrossForClosePopup();
   await subscriptionPage.clickOnAddExchange();
   await addExchangePopup.verifyFieldAreEmpty();
+
+  await addExchangePopup.clickCancelForClosePopup();
+  await addExchangePopup.verifyFieldAreEmpty();
 })
+
+test('Decrease number of sessions', async ({ subscriptionPage, addExchangePopup, 
+  cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
+  const exchangeData: Exchange = {
+    protocolType: /FIX 4.2/,
+    protocolCost: 50,
+    numberOfSessions: 4,
+    sessionCost: 10,
+  }
+
+  await subscriptionPage.navigateToURL();
+  await subscriptionPage.clickOnAddExchange();
+  await addExchangePopup.selectProtocolType(exchangeData.protocolType);
+  await addExchangePopup.clickPlusSession(exchangeData.numberOfSessions);
+  const decreaseSessions = 2;
+  await addExchangePopup.clickMinusSession(decreaseSessions);
+  const sessions = exchangeData.numberOfSessions-decreaseSessions;
+  await addExchangePopup.verifyNumberOfSessions(sessions);
+  const sessionCost = exchangeData.sessionCost*sessions
+  await addExchangePopup.verifySessionsCost(sessionCost);
+  await addExchangePopup.verifyTotalCost(exchangeData.protocolCost + sessionCost);
+})
+
 
