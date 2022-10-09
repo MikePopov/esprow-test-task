@@ -17,14 +17,18 @@ export class WebActions{
     await this.page.fill(locator, text);
   }
 
-  async clickElement(locator: string): Promise<void> {
-    await this.page.click(locator);
+  async clickElement(locator: string, numberOfClicks?: number): Promise<void> {
+    await this.page.click(locator, {clickCount: numberOfClicks});
   }
 
-  async verifyElementText(locator: string, text: string): Promise<void> {
+  async verifyElementText(locator: string, text: string|RegExp): Promise<void> {
     const textValue = await this.page.textContent(locator);
     expect(textValue.trim()).toBe(text);
   }
+
+  async verifyElementContainsText(locator: string, text: string): Promise<void> {
+    await expect(this.page.locator(locator)).toContainText(text);
+}
 
   async selectOptionFromDropdown(locator: string, option: RegExp): Promise<void> {
     const selectDropDownLocator = await this.page.$(locator);

@@ -24,4 +24,7 @@ export class SubscriptonPage extends SubscriptonPageObject{
   async navigateToURL(): Promise<void> {
     await webActions.navigateToUrl('/app/subscription');
   }
+
+  async verifyExchange(): Promise<void> {
+  }
 }
