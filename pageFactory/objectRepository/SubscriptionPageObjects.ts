@@ -6,4 +6,6 @@ export class SubscriptonPageObject{
   protected static CURRENT_PAYMENT = `[class="sc-LzLvh iyCOPv"]`;
   protected static PAY_BTN = `[class="sc-AykKE guaEXt subscription-confirm-button"]`;
   protected static HELP_MENU = `[class="sc-fzXfQV cAXUcw"]`;
+  protected static EXCHANGE_STATUS_PAID = `${this.EXCHANGE_CARD} >> [class="sc-LzLwn bybUyr"]`;
+  protected static EXCHANGE_STATUS_UNPAID = `${this.EXCHANGE_CARD} >> [class="sc-LzLwn iFJsqG"]`;
 }

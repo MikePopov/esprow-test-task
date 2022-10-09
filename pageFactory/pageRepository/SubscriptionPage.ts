@@ -32,8 +32,13 @@ export class SubscriptonPage extends SubscriptonPageObject{
     await webActions.navigateToUrl('/app/subscription');
   }
 
-  async verifyExchange(): Promise<void> {
-    await webActions.verifyElementIsDisplayed(SubscriptonPageObject.EXCHANGE_CARD, 'Exchange not created')
+  async verifyExchange(isPaid: boolean): Promise<void> {
+    await webActions.verifyElementIsDisplayed(SubscriptonPageObject.EXCHANGE_CARD, 'Exchange not created');
+    if(isPaid === true){
+      await webActions.verifyElementContainsText(SubscriptonPageObject.EXCHANGE_STATUS_PAID, 'Paid')
+    } else {
+      await webActions.verifyElementContainsText(SubscriptonPageObject.EXCHANGE_STATUS_UNPAID, 'Unpaid')
+    }
   }
 
   async verifyExchangeData(exchange: Exchange): Promise<void> {

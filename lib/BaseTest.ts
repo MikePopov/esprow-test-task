@@ -5,6 +5,7 @@ import { AddExchangePopup } from '@pages/AddExchangePopup';
 import { CartPage } from '../pageFactory/pageRepository/CartPage';
 import { CheckoutPage } from '../pageFactory/pageRepository/CheckoutPage';
 import { SuccessSubcriptionPopup } from '../pageFactory/pageRepository/SuccessSubscriptionPopup';
+import { MainMenu } from '../pageFactory/pageRepository/MainMenu';
 
 const test = baseTest.extend<{
   loginPage: LoginPage;
@@ -13,6 +14,7 @@ const test = baseTest.extend<{
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
   successSubscriptionPopup: SuccessSubcriptionPopup;
+  mainMenu: MainMenu;
 }>({
   loginPage: async ({page}, use) => {
     await use(new LoginPage(page))
@@ -31,6 +33,9 @@ const test = baseTest.extend<{
   },
   successSubscriptionPopup: async({page}, use) => {
     await use(new SuccessSubcriptionPopup(page))
+  },
+  mainMenu: async({page}, use) => {
+    await use(new MainMenu(page))
   }
 })
 

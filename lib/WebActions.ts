@@ -21,6 +21,10 @@ export class WebActions{
     await this.page.click(locator, {clickCount: numberOfClicks});
   }
 
+  async hoverElement(locator: string): Promise<void> {
+    await this.page.hover(locator);
+  }
+
   async verifyElementText(locator: string, text: string|RegExp): Promise<void> {
     const textValue = await this.page.textContent(locator);
     expect(textValue.trim()).toBe(text);
@@ -33,6 +37,11 @@ export class WebActions{
   async verifyElementIsDisplayed(locator: string, errorMessage: string): Promise<void> {
     await this.page.waitForSelector(locator, { state: `visible`, timeout: waitForElement })
         .catch(() => { throw new Error(`${errorMessage}`); });
+  }
+
+  async verifyElementAttribute(locator: string, attribute: string, value: string|null): Promise<void> {
+    const textValue = await this.page.getAttribute(locator, attribute);
+    expect(textValue.trim()).toBe(value);
   }
 
   async selectOptionFromDropdown(locator: string, option: RegExp): Promise<void> {

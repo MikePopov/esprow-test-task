@@ -26,6 +26,10 @@ export class AddExchangePopup extends AddExchangePopupObjects{
     await webActions.clickElement(AddExchangePopupObjects.ADD_BTN);
   }
 
+  async clickCrossForClosePopup(): Promise<void> {
+    await webActions.clickElement(AddExchangePopupObjects.CROSS_BTN);
+  }
+
   async addExchange(exchange: Exchange): Promise<void> {
     await this.selectProtocolType(exchange.protocolType);
     await webActions.verifyElementContainsText(AddExchangePopupObjects.PROTOCOL_COST, exchange.protocolCost.toString())
@@ -38,7 +42,7 @@ export class AddExchangePopup extends AddExchangePopupObjects{
     await this.clickAdd();
   }
 
-  async verifyCosts(): Promise<void> {
-
+  async verifyFieldAreEmpty(): Promise<void> {
+    await webActions.verifyElementAttribute(AddExchangePopupObjects.PROTOCOL_TYPE_DROPDOWN, 'value', null)
   }
 }
