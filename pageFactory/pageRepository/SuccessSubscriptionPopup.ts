@@ -18,4 +18,11 @@ export class SuccessSubcriptionPopup extends SuccessSubcriptionPopupObjects{
   async clickOnGoToExchanges() {
     await webActions.clickElement(SuccessSubcriptionPopupObjects.GO_TO_EXVHANGES_BTN);
   }
+
+  async verifyCountOfSessions(countOfSessions: number) {
+    await webActions.waitForPageNavigation('domcontentloaded')
+    // await this.page.waitForResponse('https://etpmarkets.com/api/v1/payments/prices/active')
+    await webActions.verifyElementIsDisplayed(SuccessSubcriptionPopupObjects.SUBSCRIPTION_INFO, `Subscription info not displayed`)
+    await webActions.verifyElementContainsText(SuccessSubcriptionPopupObjects.SUBSCRIPTION_INFO, `${countOfSessions.toString()} sessions`)
+  }
 }

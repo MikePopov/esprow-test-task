@@ -6,6 +6,7 @@ import { CartPage } from '../pageFactory/pageRepository/CartPage';
 import { CheckoutPage } from '../pageFactory/pageRepository/CheckoutPage';
 import { SuccessSubcriptionPopup } from '../pageFactory/pageRepository/SuccessSubscriptionPopup';
 import { MainMenu } from '../pageFactory/pageRepository/MainMenu';
+import { AttentionPopup } from '../pageFactory/pageRepository/AttentionPopup';
 
 const test = baseTest.extend<{
   loginPage: LoginPage;
@@ -15,6 +16,7 @@ const test = baseTest.extend<{
   checkoutPage: CheckoutPage;
   successSubscriptionPopup: SuccessSubcriptionPopup;
   mainMenu: MainMenu;
+  attentionPopup: AttentionPopup;
 }>({
   loginPage: async ({page}, use) => {
     await use(new LoginPage(page))
@@ -36,6 +38,9 @@ const test = baseTest.extend<{
   },
   mainMenu: async({page}, use) => {
     await use(new MainMenu(page))
+  },
+  attentionPopup: async({page}, use) => {
+    await use(new AttentionPopup(page))
   }
 })
 
