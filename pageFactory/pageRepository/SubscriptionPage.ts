@@ -37,7 +37,7 @@ export class SubscriptonPage extends SubscriptonPageObject{
     await webActions.navigateToUrl('/app/subscription');
   }
 
-  async verifyExchange(isPaid: boolean): Promise<void> {
+  async verifySubscription(isPaid: boolean): Promise<void> {
     await webActions.verifyElementIsDisplayed(SubscriptonPageObject.SUBSCRIPTION_CARD, 'Exchange not created');
     if(isPaid === true){
       await webActions.verifyElementContainsText(SubscriptonPageObject.EXCHANGE_STATUS_PAID, 'Paid')
@@ -46,21 +46,33 @@ export class SubscriptonPage extends SubscriptonPageObject{
     }
   }
 
-  async verifyExchangeData(exchange: Exchange): Promise<void> {
-    this.verifyProtocolType(exchange.protocolType)
-    this.verifyProtocolPrice(exchange.protocolCost.toString())
-    const sessionCost = exchange.numberOfSessions*exchange.sessionCost
-    const currentPayment = exchange.protocolCost+sessionCost;
-    this.verifySessionsCount(exchange.numberOfSessions)
-    this.verifyCurrentPayment(currentPayment.toString());
+  async verifySubscriptionData(subscription: Exchange): Promise<void> {
+    this.verifyProtocolType(subscription.protocolType)
+    this.verifyProtocolPrice(subscription.protocolCost.toString())
+    const sessionCost = subscription.numberOfSessions*subscription.sessionCost
+    const currentPayment = subscription.protocolCost+sessionCost;
+    this.verifySessionsCount(subscription.numberOfSessions)
+    this.verifyCurrentPaymentInSubscriptionCard(currentPayment.toString());
   }
 
-  async verifyCurrentPayment(payment: string|RegExp): Promise<void> {
+  async verifyCurrentPaymentInSubscriptionCard(payment: string|RegExp): Promise<void> {
     await webActions.verifyElementContainsText(SubscriptonPageObject.CURRENT_PAYMENT, payment)
   }
 
   async verifySessionsCount(countOfSessions: number): Promise<void> {
     await webActions.verifyElementContainsText(SubscriptonPageObject.COUNT_OF_SESIONS, countOfSessions.toString())
+  }
+
+  async verifySessionPriceInSubscriptionCard(sessionCost: number): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.SUBSCRIPTION_CARD, `Price: $${sessionCost.toLocaleString()}`)
+  }
+
+  async verifyMonthlyTotalSubscription(price: number): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_SUBSCRIPTION_TOTAL, price.toString())
+  }
+
+  async verifyCurrentPaymentTotal(price: number): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.CURRENT_PAYMENT_TOTAL, price.toString())
   }
 
   async verifyProtocolType(protocolType: string|RegExp): Promise<void> {
@@ -82,6 +94,7 @@ export class SubscriptonPage extends SubscriptonPageObject{
 
   async addSessionsToSubsccription(countOfSessions: number): Promise<void> {
     await webActions.clickElement(SubscriptonPageObject.PLUS_SESIONS, countOfSessions)
+    await this.page.waitForTimeout(3000);
   } 
 
   async removeSessionsFromSubsccription(countOfSessions: number): Promise<void> {

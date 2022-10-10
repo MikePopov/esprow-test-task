@@ -48,13 +48,13 @@ test('Add and Subscribe new exchange', async ({ subscriptionPage, addExchangePop
   await subscriptionPage.navigateToURL();
   await subscriptionPage.clickOnAddExchange();
   await addExchangePopup.addExchange(exchangeData);
-  await subscriptionPage.verifyExchange(false);
+  await subscriptionPage.verifySubscription(false);
   await subscriptionPage.clickOnPay();
   await cartPage.clickOnProceedCheckout();
   await checkoutPage.clickOnPayAndSubscribe();
   await successSubscriptionPopup.clickOnGoToExchanges();
   await mainMenu.openSubscriptionPage();
-  await subscriptionPage.verifyExchange(true);
+  await subscriptionPage.verifySubscription(true);
 })
 
 test('Interruption add Exchange', async ({ subscriptionPage, addExchangePopup }) => {

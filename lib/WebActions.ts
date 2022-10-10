@@ -67,4 +67,9 @@ export class WebActions{
             await this.page.waitForNavigation({ waitUntil: `domcontentloaded`, timeout: waitForElement });
     }
   }
+
+  async waitForRequest(url: string, method: string): Promise<void> {
+    await Promise.all([
+      this.page.waitForRequest(req => req.url().includes(url) && req.method() === method),]);
+  }
 }
