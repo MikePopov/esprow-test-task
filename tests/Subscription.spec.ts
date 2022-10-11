@@ -1,4 +1,5 @@
 import test from '@lib/BaseTest';
+import { ModificationType } from '../lib/enums';
 import { Exchange } from '../lib/types';
 import { testConfig } from '../testconfig';
 
@@ -161,6 +162,78 @@ test.describe.only('Subscription', () => {
     await subscriptionPage.verifyMonthlyTotalSubscription(totalMonthly);
     const currentTotal = subscriptionData2.protocolCost + subscriptionData2.sessionCost
     await subscriptionPage.verifyCurrentPaymentTotal(currentTotal);
+  })
+
+  test('Add sessions to PAID subscription', async ({ subscriptionPage, addExchangePopup, 
+    cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData);
+    await subscriptionPage.clickOnPay();
+    await cartPage.clickOnProceedCheckout();
+    await checkoutPage.clickOnPayAndSubscribe();
+    await successSubscriptionPopup.clickOnGoToExchanges();
+    await mainMenu.openSubscriptionPage();
+    await subscriptionPage.verifyConfirmBtnText('Confirm');
+  
+    const countOfAddedSessions = 2;
+    const countOfSessions = subscriptionData.numberOfSessions+countOfAddedSessions;
+    const monthlyTotal = subscriptionData.protocolCost+(subscriptionData.sessionCost*countOfSessions);
+    await subscriptionPage.addSessionsToSubsccription(countOfAddedSessions);
+    await subscriptionPage.verifyModifiedSessions(countOfAddedSessions, ModificationType.ADD);
+    await subscriptionPage.verifyMonthlyTotalSubscription(monthlyTotal);
+  })
+
+  test('Decrease sessions from PAID subscription', async ({ subscriptionPage, addExchangePopup, 
+    cartPage, checkoutPage, successSubscriptionPopup, mainMenu, attentionPopup }) => {
+    const subscriptionData2: Exchange = {
+      protocolType: /FIX 4.2/,
+      protocolCost: 50,
+      numberOfSessions: 4,
+      sessionCost: 10,
+    }    
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData2);
+    await subscriptionPage.clickOnPay();
+    await cartPage.clickOnProceedCheckout();
+    await checkoutPage.clickOnPayAndSubscribe();
+    await successSubscriptionPopup.clickOnGoToExchanges();
+    await mainMenu.openSubscriptionPage();
+    await subscriptionPage.verifyConfirmBtnText('Confirm');
+  
+    const countOfRemovedSessions = 2;
+    const countOfSessions = subscriptionData2.numberOfSessions-countOfRemovedSessions
+    await subscriptionPage.removeSessionsFromSubsccription(countOfRemovedSessions);
+    await subscriptionPage.verifyModifiedSessions(countOfRemovedSessions, ModificationType.REMOVE);
+    await subscriptionPage.verifyConfirmBtnText('Confirm');
+    await subscriptionPage.clickOnPay();
+
+    await attentionPopup.verifyRemoveSessions(subscriptionData2.numberOfSessions, countOfRemovedSessions)
+    await attentionPopup.clickOnConfirm();
+
+    await successSubscriptionPopup.verifyCountOfSessions(countOfSessions);
+    await successSubscriptionPopup.clickOnGoToExchanges();
+
+    await mainMenu.openSubscriptionPage();
+    await subscriptionPage.verifySessionsCount(countOfSessions);
+  })
+
+  test('Modify UNPAID subscription', async ({ subscriptionPage, addExchangePopup, 
+    cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
+    const subscriptionData: Exchange = {
+      protocolType: /FIX 4.2/,
+      protocolCost: 50,
+      numberOfSessions: 4,
+      sessionCost: 10,
+    }
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData);
+  
+    const countOfAddedSessions = 2;
+    const countOfRemovedSessions = 3;
+    await subscriptionPage.addSessionsToSubsccription(countOfAddedSessions);
+    await subscriptionPage.verifyModifiedSessions(countOfAddedSessions, ModificationType.ADD);
+    await subscriptionPage.removeSessionsFromSubsccription(countOfRemovedSessions+countOfAddedSessions);
+    await subscriptionPage.verifyModifiedSessions(countOfRemovedSessions, ModificationType.REMOVE);
   })
   
 })

@@ -60,41 +60,8 @@ test.describe('Paided Subscription', () => {
     await mainMenu.openSubscriptionPage()
   })
 
-  test('Add and pay session to paided Subscription', async ({ subscriptionPage, addExchangePopup, 
-    cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
   
-    const countOfAddedSessions = 2;
-    const countOfSessions = subscriptionData.numberOfSessions+countOfAddedSessions
-    await subscriptionPage.addSessionsToSubsccription(countOfAddedSessions);
-    await subscriptionPage.verifyModifiedSessions(countOfAddedSessions, ModificationType.ADD);
-    await subscriptionPage.clickOnPay();
-    await cartPage.clickOnProceedCheckout();
-    await checkoutPage.clickOnPayAndSubscribe();
-    await successSubscriptionPopup.verifyCountOfSessions(countOfSessions);
-    await successSubscriptionPopup.clickOnGoToExchanges();
-    await mainMenu.openSubscriptionPage();
-    await subscriptionPage.verifySessionsCount(countOfSessions);
-  })
   
-  test('Remove sessions from paided Subscription', async ({ subscriptionPage, addExchangePopup, 
-    cartPage, checkoutPage, successSubscriptionPopup, mainMenu, attentionPopup }) => {
-  
-    const countOfRemovedSessions = 2;
-    const countOfSessions = subscriptionData.numberOfSessions-countOfRemovedSessions
-    await subscriptionPage.removeSessionsFromSubsccription(countOfRemovedSessions);
-    await subscriptionPage.verifyModifiedSessions(countOfRemovedSessions, ModificationType.REMOVE);
-    await subscriptionPage.verifyConfirmBtnText();
-    await subscriptionPage.clickOnPay();
-
-    await attentionPopup.verifyRemoveSessions(subscriptionData.numberOfSessions, countOfRemovedSessions)
-    await attentionPopup.clickOnConfirm();
-
-    await successSubscriptionPopup.verifyCountOfSessions(countOfSessions);
-    await successSubscriptionPopup.clickOnGoToExchanges();
-
-    await mainMenu.openSubscriptionPage();
-    await subscriptionPage.verifySessionsCount(countOfSessions);
-  })
 
   test('verify costs after add Session to paided Subscription', async ({ subscriptionPage, mainMenu }) => {
     const countOfAddedSessions = 1;

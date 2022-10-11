@@ -29,6 +29,7 @@ export class SubscriptonPage extends SubscriptonPageObject{
     await webActions.clickElement(SubscriptonPageObject.PAY_BTN);
   }
 
+
   async verifyConfirmBtnText(text: string): Promise<void> {
     await webActions.verifyElementContainsText(SubscriptonPageObject.PAY_BTN, text)
   }
