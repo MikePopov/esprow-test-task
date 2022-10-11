@@ -21,6 +21,6 @@ export class MainMenu extends MainMenuObjects{
     // this.page.waitForRequest('https://etpmarkets.com/api/v1/payments/prices')
     await Promise.all([
       this.page.waitForRequest(req => req.url().includes('/api/v1/payments/prices') && req.method() === 'POST'),]);
-    
+    await webActions.mouseMove();
   }
 }

@@ -25,6 +25,10 @@ export class WebActions{
     await this.page.hover(locator);
   }
 
+  async mouseMove(): Promise<void> {
+    await this.page.mouse.move(0, 0)
+  }
+
   async verifyElementText(locator: string, text: string|RegExp): Promise<void> {
     const textValue = await this.page.textContent(locator);
     expect(textValue.trim()).toBe(text);

@@ -47,6 +47,7 @@ export class SubscriptonPage extends SubscriptonPageObject{
   }
 
   async verifySubscriptionData(subscription: Exchange): Promise<void> {
+    await this.page.waitForTimeout(1000);
     //   * I see "Protocol type"
     this.verifyProtocolType(subscription.protocolType)
     //   * I see "Protocol price"

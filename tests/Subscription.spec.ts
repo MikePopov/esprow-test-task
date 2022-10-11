@@ -74,7 +74,7 @@ test.describe.only('Subscription', () => {
     await subscriptionPage.verifySubscription(true);
   })
 
-  test('verify Subscription data', async ({ subscriptionPage, addExchangePopup }) => {
+  test('Verify Subscription card data', async ({ subscriptionPage, addExchangePopup }) => {
   // 1. I click "Add exchange"
   await subscriptionPage.clickOnAddExchange();
   //   * I see "Add new exchange popup"
@@ -83,24 +83,37 @@ test.describe.only('Subscription', () => {
   //   * I see text "UNPAID"
   await subscriptionPage.verifySubscription(false);
   await subscriptionPage.verifySubscriptionData(subscriptionData)
-    // 3. I see "Monthly Subscription section"
-  //   * I see "Total cost" 
-  const monthlyTotal = subscriptionData.protocolCost+subscriptionData.sessionCost;
-  await subscriptionPage.verifyMonthlyTotalSubscription(monthlyTotal)
-  //   * I see "Type of Protocol"
-  //   * I see "Protocol price" 
-  await subscriptionPage.verifyMonthlyProtocolTypeAndPrice(subscriptionData.protocolType, subscriptionData.protocolCost)
-  //   * I see "Number of sessions" with "1"
-  //   * I see "Cost of sessions" with "10$"
-  await subscriptionPage.verifyMonthlyNumberOfSessionsAndPrice(subscriptionData.numberOfSessions, subscriptionData.sessionCost)
-  // 4. I see "Current Subscription section"
-  const currentPayment = subscriptionData.protocolCost+subscriptionData.sessionCost
-  await subscriptionPage.verifyCurrentPaymentTotal(currentPayment);
-  // 5. I see "Pay button" with "60$"
-  await subscriptionPage.verifyConfirmBtnText(`Pay ${currentPayment}`)
   })
 
-  test('Verify pay Subscription data', async ({subscriptionPage, addExchangePopup, 
+  test('Verify Monthly Subscription data', async ({ subscriptionPage, addExchangePopup }) => {
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData);
+     // 3. I see "Monthly Subscription section"
+    //   * I see "Total cost" 
+    const monthlyTotal = subscriptionData.protocolCost+subscriptionData.sessionCost;
+    await subscriptionPage.verifyMonthlyTotalSubscription(monthlyTotal)
+    //   * I see "Type of Protocol"
+    //   * I see "Protocol price" 
+    await subscriptionPage.verifyMonthlyProtocolTypeAndPrice(subscriptionData.protocolType, subscriptionData.protocolCost)
+    //   * I see "Number of sessions" with "1"
+    //   * I see "Cost of sessions" with "10$"
+    await subscriptionPage.verifyMonthlyNumberOfSessionsAndPrice(subscriptionData.numberOfSessions, subscriptionData.sessionCost)
+
+  })
+
+  test('Verify Current payment data', async ({ subscriptionPage, addExchangePopup }) => {
+    // 1. I click "Add exchange"
+    await subscriptionPage.clickOnAddExchange();
+    //   * I see "Add new exchange popup"
+    await addExchangePopup.addExchange(subscriptionData);
+       // 4. I see "Current Subscription section"
+    const currentPayment = subscriptionData.protocolCost+subscriptionData.sessionCost
+    await subscriptionPage.verifyCurrentPaymentTotal(currentPayment);
+  // 5. I see "Pay button" with "60$"
+    await subscriptionPage.verifyConfirmBtnText(`Pay ${currentPayment}`)
+  })
+
+  test.skip('Verify pay Subscription data', async ({subscriptionPage, addExchangePopup, 
     cartPage, checkoutPage, successSubscriptionPopup, mainMenu}) => {
     await subscriptionPage.navigateToURL();
     await subscriptionPage.clickOnAddExchange();
@@ -121,6 +134,33 @@ test.describe.only('Subscription', () => {
     await mainMenu.openSubscriptionPage();
     // * I see "Subscription card" with "PAID"
     await subscriptionPage.verifySubscription(true);
+  })
+
+  test('Add new one Subscription to existed subscriptions list and pay', async ({ subscriptionPage, addExchangePopup, 
+    cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
+    
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData);
+    await subscriptionPage.clickOnPay();
+    await cartPage.clickOnProceedCheckout();
+    await checkoutPage.clickOnPayAndSubscribe();
+    await successSubscriptionPopup.clickOnGoToExchanges();
+    await mainMenu.openSubscriptionPage();
+    await subscriptionPage.verifySubscription(true);
+
+    const subscriptionData2: Exchange = {
+      protocolType: /FIX 4.3/,
+      protocolCost: 50,
+      numberOfSessions: 1,
+      sessionCost: 10,
+    }
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData2);
+    const totalMonthly = (subscriptionData2.protocolCost + subscriptionData2.sessionCost) + 
+    (subscriptionData.protocolCost + subscriptionData.sessionCost);
+    await subscriptionPage.verifyMonthlyTotalSubscription(totalMonthly);
+    const currentTotal = subscriptionData2.protocolCost + subscriptionData2.sessionCost
+    await subscriptionPage.verifyCurrentPaymentTotal(currentTotal);
   })
   
 })
