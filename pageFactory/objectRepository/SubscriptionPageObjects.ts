@@ -7,9 +7,12 @@ export class SubscriptonPageObject{
   protected static MINUS_SESIONS = `${this.SUBSCRIPTION_CARD} >> [class="sc-LzLwq WefCk"] >> nth=0`;
   protected static COUNT_OF_SESIONS = `${this.SUBSCRIPTION_CARD} >> [class="sc-LzLwr iFBxMS"]`;
   protected static ADDED_SESSIONS = `${this.SUBSCRIPTION_CARD} >> p`
+  protected static CARD_CHECKBOX =`${this.SUBSCRIPTION_CARD} >> [data-icon="check"]`
   protected static CURRENT_PAYMENT = `[class="sc-LzLvh iyCOPv"]`;
+  protected static DELETE_BTN = `[class="sc-LzLsz ensAMi"] >> nth=0`;
   protected static PAY_BTN = `[class="sc-AykKE guaEXt subscription-confirm-button"]`;
   protected static HELP_MENU = `[class="sc-fzXfQV cAXUcw"]`;
+  protected static SUBSCRIPTION_CARD_DISABLE = `[class="sc-LzLvb cfjskF"]`;
   protected static EXCHANGE_STATUS_PAID = `${this.SUBSCRIPTION_CARD} >> [class="sc-LzLwn bybUyr"]`;
   protected static EXCHANGE_STATUS_UNPAID = `${this.SUBSCRIPTION_CARD} >> [class="sc-LzLwn iFJsqG"]`;
   protected static MONTHLY_SUBSCRIPTION_SECTION = `[class="sc-LzLwt iFSqVk"]`;

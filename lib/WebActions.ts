@@ -34,6 +34,10 @@ export class WebActions{
     expect(textValue.trim()).toBe(text);
   }
 
+  async verifyElementNotExist(locator: string): Promise <void> {
+    await expect(this.page.locator(locator)).toHaveCount(0);
+  }
+
   async verifyElementContainsText(locator: string, text: string|RegExp): Promise<void> {
     await expect(this.page.locator(locator)).toContainText(text);
   }

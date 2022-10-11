@@ -235,5 +235,44 @@ test.describe.only('Subscription', () => {
     await subscriptionPage.removeSessionsFromSubsccription(countOfRemovedSessions+countOfAddedSessions);
     await subscriptionPage.verifyModifiedSessions(countOfRemovedSessions, ModificationType.REMOVE);
   })
+
+  test('Delete UNPAID Subscription', async ({ subscriptionPage, addExchangePopup, 
+    attentionPopup }) => {
+    const subscriptionData: Exchange = {
+      protocolType: /FIX 4.2/,
+      protocolCost: 50,
+      numberOfSessions: 4,
+      sessionCost: 10,
+    }
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData);
+  
+    await subscriptionPage.checkSubscriptionCard()
+    await subscriptionPage.clickDelete();
+    await subscriptionPage.verifySubscriptionCardPendingDeletion();
+    await subscriptionPage.clickOnPay();
+    await subscriptionPage.clickOnAddExchange();
+    await attentionPopup.clickOnConfirm();
+    await subscriptionPage.verifySubscriptionNotExist();
+  })
+
+  test('Delete PAID Subscrition', async ({ subscriptionPage, addExchangePopup, 
+    cartPage, checkoutPage, successSubscriptionPopup, mainMenu, attentionPopup }) => {
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.addExchange(subscriptionData);
+    await subscriptionPage.clickOnPay();
+    await cartPage.clickOnProceedCheckout();
+    await checkoutPage.clickOnPayAndSubscribe();
+    await successSubscriptionPopup.clickOnGoToExchanges();
+    await mainMenu.openSubscriptionPage();
+    await subscriptionPage.verifyConfirmBtnText('Confirm');
+  
+    await subscriptionPage.checkSubscriptionCard()
+    await subscriptionPage.clickDelete();
+    await subscriptionPage.verifySubscriptionCardPendingDeletion();
+    await subscriptionPage.clickOnPay();
+    await attentionPopup.clickOnConfirm();
+    await subscriptionPage.verifySubscriptionNotExist();
+  })
   
 })

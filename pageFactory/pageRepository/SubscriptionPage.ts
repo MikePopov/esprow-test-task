@@ -47,6 +47,11 @@ export class SubscriptonPage extends SubscriptonPageObject{
     }
   }
 
+  async verifySubscriptionNotExist(): Promise<void> {
+    await webActions.waitForPageNavigation('load')
+    await webActions.verifyElementNotExist(SubscriptonPageObject.SUBSCRIPTION_CARD)
+  }
+
   async verifySubscriptionData(subscription: Exchange): Promise<void> {
     await this.page.waitForTimeout(1000);
     //   * I see "Protocol type"
@@ -109,6 +114,18 @@ export class SubscriptonPage extends SubscriptonPageObject{
 
     }
   }
+
+  async checkSubscriptionCard(): Promise<void> {
+    await webActions.clickElement(SubscriptonPageObject.CARD_CHECKBOX)
+  }
+
+  async clickDelete(): Promise<void> {
+    await webActions.clickElement(SubscriptonPageObject.DELETE_BTN)
+  }
+
+  async verifySubscriptionCardPendingDeletion(): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.SUBSCRIPTION_CARD_DISABLE, 'Pending Deletion')
+  } 
 
   async addSessionsToSubsccription(countOfSessions: number): Promise<void> {
     await webActions.clickElement(SubscriptonPageObject.PLUS_SESIONS, countOfSessions)
