@@ -14,6 +14,8 @@ export class SubscriptonPageObject{
   protected static EXCHANGE_STATUS_UNPAID = `${this.SUBSCRIPTION_CARD} >> [class="sc-LzLwn iFJsqG"]`;
   protected static MONTHLY_SUBSCRIPTION_SECTION = `[class="sc-LzLwt iFSqVk"]`;
   protected static MONTHLY_SUBSCRIPTION_TOTAL = `${this.MONTHLY_SUBSCRIPTION_SECTION} >> [class="sc-LzLvK itSjYu"] >> nth = 0`
+  protected static MONTHLY_TYPE_OF_PROTOCOL_AND_PRICE = `${this.MONTHLY_SUBSCRIPTION_SECTION} >> [class="sc-LzLvK itSjYu"] >> nth = 1`
+  protected static MONTHLY_SESSIONS_AND_PRICE = `${this.MONTHLY_SUBSCRIPTION_SECTION} >> [class="sc-LzLvK itSjYu"] >> nth = 2`
   protected static CURRENT_PAYMENT_SECTION = `[class="sc-LzLwu iGaNzt"]`;
   protected static CURRENT_PAYMENT_TOTAL =`${this.CURRENT_PAYMENT_SECTION} >> [class="sc-fzXfQm cEJTuv"] >> nth = 1`
 }

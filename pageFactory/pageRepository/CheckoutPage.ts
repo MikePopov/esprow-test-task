@@ -18,4 +18,10 @@ export class CheckoutPage extends CheckoutPageObjects{
     await webActions.clickElement(CheckoutPageObjects.I_AGREE_CHECKBOX);
     await webActions.clickElement(CheckoutPageObjects.PAY_AND_SUBCRIBE_BTN);
   }
+
+  async verifyData(subscriptionData: Exchange) {
+    const payment = subscriptionData.sessionCost + subscriptionData.protocolCost
+    await webActions.verifyElementContainsText(CheckoutPageObjects.PAY_NOW, payment.toString())
+    await webActions.verifyElementContainsText(CheckoutPageObjects.NEXT_CHARGE, payment.toString())
+  }
 }

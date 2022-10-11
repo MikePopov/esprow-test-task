@@ -29,8 +29,8 @@ export class SubscriptonPage extends SubscriptonPageObject{
     await webActions.clickElement(SubscriptonPageObject.PAY_BTN);
   }
 
-  async verifyConfirmBtnText(): Promise<void> {
-    await webActions.verifyElementContainsText(SubscriptonPageObject.PAY_BTN, 'Confirm')
+  async verifyConfirmBtnText(text: string): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.PAY_BTN, text)
   }
   
   async navigateToURL(): Promise<void> {
@@ -47,11 +47,17 @@ export class SubscriptonPage extends SubscriptonPageObject{
   }
 
   async verifySubscriptionData(subscription: Exchange): Promise<void> {
+    //   * I see "Protocol type"
     this.verifyProtocolType(subscription.protocolType)
+    //   * I see "Protocol price"
     this.verifyProtocolPrice(subscription.protocolCost.toString())
+    //   * I see "Number of sessions" with "1"
+    this.verifySessionsCount(subscription.numberOfSessions)
+    //   * I see "Price of session"
+    this.verifySessionPriceInSubscriptionCard(subscription.sessionCost)
+     //   * I see "Current payment" 
     const sessionCost = subscription.numberOfSessions*subscription.sessionCost
     const currentPayment = subscription.protocolCost+sessionCost;
-    this.verifySessionsCount(subscription.numberOfSessions)
     this.verifyCurrentPaymentInSubscriptionCard(currentPayment.toString());
   }
 
@@ -69,6 +75,16 @@ export class SubscriptonPage extends SubscriptonPageObject{
 
   async verifyMonthlyTotalSubscription(price: number): Promise<void> {
     await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_SUBSCRIPTION_TOTAL, price.toString())
+  }
+
+  async verifyMonthlyProtocolTypeAndPrice(prtocol: string| RegExp, price: number): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_TYPE_OF_PROTOCOL_AND_PRICE, prtocol)
+    await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_TYPE_OF_PROTOCOL_AND_PRICE, price.toString())
+  }
+
+  async verifyMonthlyNumberOfSessionsAndPrice(numberOfSessions: number, price: number): Promise<void> {
+    await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_SESSIONS_AND_PRICE, numberOfSessions.toString())
+    await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_SESSIONS_AND_PRICE, price.toString())
   }
 
   async verifyCurrentPaymentTotal(price: number): Promise<void> {

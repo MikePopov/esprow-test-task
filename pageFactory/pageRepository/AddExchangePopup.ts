@@ -30,6 +30,12 @@ export class AddExchangePopup extends AddExchangePopupObjects{
     await webActions.clickElement(AddExchangePopupObjects.ADD_BTN);
   }
 
+  async verifyAddBtn(isActive: boolean): Promise<void> {
+    if(isActive === false){
+      await webActions.verifyElementAttribute(AddExchangePopupObjects.ADD_BTN, 'disabled', null)
+    }
+  }
+
   async clickCrossForClosePopup(): Promise<void> {
     await webActions.clickElement(AddExchangePopupObjects.CROSS_BTN);
   }
@@ -39,14 +45,23 @@ export class AddExchangePopup extends AddExchangePopupObjects{
   }
 
   async addExchange(exchange: Exchange): Promise<void> {
+    //   * I select "Protocol Type" 
     await this.selectProtocolType(exchange.protocolType);
-    this.verifyProtocolCost(exchange.protocolCost);
-    const sessionCost = exchange.sessionCost * exchange.numberOfSessions;
+    //   * I see "Protocol cost"
+    await this.verifyProtocolCost(exchange.protocolCost);
+    //   * I see "Total cost" with "50$"
+    await this.verifyTotalCost(exchange.protocolCost);
+    //   * I click "Plus number of sessions"
     await this.clickPlusSession(exchange.numberOfSessions);
-    this.verifyNumberOfSessions(exchange.numberOfSessions);
-    this.verifySessionsCost(sessionCost);
+    //   * I see "Numer of sessions" 
+    await this.verifyNumberOfSessions(exchange.numberOfSessions);
+    //   * I see "Session cost" 
+    const sessionCost = exchange.sessionCost * exchange.numberOfSessions;
+    await this.verifySessionsCost(sessionCost);
+    //   * I see "Total cost" with "60"
     const totalCost = exchange.protocolCost+sessionCost;
-    this.verifyTotalCost(totalCost);
+    await this.verifyTotalCost(totalCost);
+    //   * I click "Add"
     await this.clickAdd();
   }
 
