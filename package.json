@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "npx playwright test --workers=1",
+		"test": "TESTOMATIO=i0068b16d96g npx playwright test --workers=1",
 		"test:dev": "npx cross-env ENV=dev npm run test"
 	},
 	"repository": {
@@ -22,12 +22,13 @@
 		"@types/crypto-js": "^4.1.1",
 		"@typescript-eslint/eslint-plugin": "^5.37.0",
 		"@typescript-eslint/parser": "^5.37.0",
+		"cross-env": "^7.0.3",
 		"eslint": "^8.23.1",
 		"eslint-plugin-import": "^2.26.0",
-		"typescript": "^4.8.3",
-		"cross-env": "^7.0.3"
+		"typescript": "^4.8.3"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.26.1"
+		"@playwright/test": "^1.26.1",
+		"@testomatio/reporter": "^0.6.10"
 	}
 }

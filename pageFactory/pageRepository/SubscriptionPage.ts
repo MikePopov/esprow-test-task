@@ -47,9 +47,13 @@ export class SubscriptonPage extends SubscriptonPageObject{
     }
   }
 
+  async verifySubscriptionsCount(count: number): Promise<void> {
+    await webActions.verifyElementCount(SubscriptonPageObject.SUBSCRIPTION_CARD, count)
+  }
+
   async verifySubscriptionNotExist(): Promise<void> {
     await webActions.waitForPageNavigation('load')
-    await webActions.verifyElementNotExist(SubscriptonPageObject.SUBSCRIPTION_CARD)
+    await webActions.verifyElementCount(SubscriptonPageObject.SUBSCRIPTION_CARD, 0)
   }
 
   async verifySubscriptionData(subscription: Exchange): Promise<void> {
@@ -81,6 +85,7 @@ export class SubscriptonPage extends SubscriptonPageObject{
   }
 
   async verifyMonthlyTotalSubscription(price: number): Promise<void> {
+    await this.page.waitForTimeout(3000);
     await webActions.verifyElementContainsText(SubscriptonPageObject.MONTHLY_SUBSCRIPTION_TOTAL, price.toString())
   }
 

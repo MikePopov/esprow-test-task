@@ -2,50 +2,50 @@
   "cookies": [
     {
       "name": "did",
-      "value": "s%3Av0%3A6dff4750-49b8-11ed-ac92-937e6f7430e3.Ptarpb7fbBt%2FuT3kUeT9o%2BOKSZ5bnhsbzNXCyxTy0p0",
+      "value": "s%3Av0%3A99646fa0-49c3-11ed-9c35-d374e59a81a5.n7fayyc493RMp2KYzg2XKYBhlPVasMIoT7X9zOuQPGo",
       "domain": "auth.etpmarkets.com",
       "path": "/",
-      "expires": 1697086389.411878,
+      "expires": 1697091186.673635,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "auth0",
-      "value": "s%3AQZdpmgg4Q7hPyfUfVsaq3HvjlYhDhAEg.AmOxZf3%2Bov%2BRbvIov2i2g%2Bs43dU%2F3KSCC1zfOFR9PSM",
+      "value": "s%3A_4OMRDZo00EpmIP8Pl2lTjZfrh-nuxQ3.o3Q2zqE7g%2BA4pPCv5CJpZWjzNIEa%2BFhvstWsiy9nLUE",
       "domain": "auth.etpmarkets.com",
       "path": "/",
-      "expires": 1665787990.026137,
+      "expires": 1665792787.37933,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "did_compat",
-      "value": "s%3Av0%3A6dff4750-49b8-11ed-ac92-937e6f7430e3.Ptarpb7fbBt%2FuT3kUeT9o%2BOKSZ5bnhsbzNXCyxTy0p0",
+      "value": "s%3Av0%3A99646fa0-49c3-11ed-9c35-d374e59a81a5.n7fayyc493RMp2KYzg2XKYBhlPVasMIoT7X9zOuQPGo",
       "domain": "auth.etpmarkets.com",
       "path": "/",
-      "expires": 1697086389.412736,
+      "expires": 1697091186.674339,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "auth0_compat",
-      "value": "s%3AQZdpmgg4Q7hPyfUfVsaq3HvjlYhDhAEg.AmOxZf3%2Bov%2BRbvIov2i2g%2Bs43dU%2F3KSCC1zfOFR9PSM",
+      "value": "s%3A_4OMRDZo00EpmIP8Pl2lTjZfrh-nuxQ3.o3Q2zqE7g%2BA4pPCv5CJpZWjzNIEa%2BFhvstWsiy9nLUE",
       "domain": "auth.etpmarkets.com",
       "path": "/",
-      "expires": 1665787990.026209,
+      "expires": 1665792787.379386,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
-      "name": "co%2Fverifier%2Fhttps%253A%252F%252Fauth.etpmarkets.com%2Fe6rRTKkuT-Tm",
-      "value": "%22eHW_O_TIGjJ3lKsPUsHF9YVuBvk1Imgr%22",
+      "name": "co%2Fverifier%2Fhttps%253A%252F%252Fauth.etpmarkets.com%2FAa_R4hzbeOCo",
+      "value": "%227KEsCoeZadCyLKcE5wofPvcnzUNO4Ftj%22",
       "domain": "spa-dev.etpmarkets.com",
       "path": "/",
-      "expires": 1665529689,
+      "expires": 1665534486,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -55,7 +55,7 @@
       "value": "%22{%5C%22lastUsedConnection%5C%22:%5C%22Username-Password-Authentication%5C%22%2C%5C%22lastUsedSub%5C%22:%5C%22auth0|5fd9f5e25187f50076d310db%5C%22}%22",
       "domain": "spa-dev.etpmarkets.com",
       "path": "/",
-      "expires": 1665615190,
+      "expires": 1665619988,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -67,11 +67,11 @@
       "localStorage": [
         {
           "name": "ETP_GEMS_loginInfo",
-          "value": "{\"accessToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFqa3dNalF6UlVVelJEY3lOekk0TTBGQlFrRXlNRFkwUVRNd016STNSalF4TkROQk1qSXdPUSJ9.eyJpc3MiOiJodHRwczovL2F1dGguZXRwbWFya2V0cy5jb20vIiwic3ViIjoiYXV0aDB8NWZkOWY1ZTI1MTg3ZjUwMDc2ZDMxMGRiIiwiYXVkIjpbImh0dHBzOi8vZXNwcm93LWdlbXMuYXV0aDAuY29tL2FwaS92Mi8iLCJodHRwczovL2VzcHJvdy1nZW1zLmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2NjU1MjkxOTksImV4cCI6MTY2NTUzNjM5OSwiYXpwIjoiTDAzRFpGVUlNejVzRWFWUFVTQmhEbXQwaVZ1azRjalUiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIn0.wpK8P219-ZU6lz-BADUvf8F_SwB07gTarp5YI79E-AHfp-6K7OGM7a0GHJSW76rkZyr5l1bF9E2lGpiin7dDbv_1hr1e4ADsBPXWowsFRLQ4fbzPi2BPp0JQ5dKKgLzB_ur4z5YSv8oFAnsS3gSeLOznIKinClygtLnS_RBg2VX0-mkBrGMNpLQXqunSMuL3tvumkNDhwsVDFeYmGxoCS-YgnqEL9XVDqFDdKUZU2mZjtmsoDoALupuWQTTwb5ITk5GL94maYZrPf5EcFwHZsbToetV58vjOyERkthRd7QkbZEN1s1enWj-aOb8C-DloKwT_WvlIWt7d91Va5vts0g\",\"idToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFqa3dNalF6UlVVelJEY3lOekk0TTBGQlFrRXlNRFkwUVRNd016STNSalF4TkROQk1qSXdPUSJ9.eyJodHRwczovL2V0cG1hcmtldHMuY29tL3VzZXJfbWV0YWRhdGEiOnsiY291bnRyeSI6InRlc3QiLCJ1c2VybmFtZSI6InRlc3QifSwibmlja25hbWUiOiJ0ZXN0LnFhLjMiLCJuYW1lIjoidGVzdC5xYS4zQGVzcHJvdy5jb20iLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvYzQwMTU2ZmU2ODE4MjQzNjdlOGM1ZTZmZWNhZmQ4OTk_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZ0ZS5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyMi0xMC0xMVQyMjo1OTo1OC44MjlaIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmV0cG1hcmtldHMuY29tLyIsInN1YiI6ImF1dGgwfDVmZDlmNWUyNTE4N2Y1MDA3NmQzMTBkYiIsImF1ZCI6IkwwM0RaRlVJTXo1c0VhVlBVU0JoRG10MGlWdWs0Y2pVIiwiaWF0IjoxNjY1NTI5MTk5LCJleHAiOjE2NjU1NjUxOTksImF0X2hhc2giOiIwbHdDeTZjV0pJaW9MZ05SZGJIWGVBIiwibm9uY2UiOiJYY0xrd0tnVHNKR2RxUXNfZkJnQi5sWDlPfm9lZFJoQyJ9.Yl-zbvyM-ehN_YRl-2GhqC7Df1bRNR2PWx5a6RKlrEUttRb3niltmBEBppDbsJIjhGbO-2DFqurIOtRrLYUgv9WDYNh4LlnrunT_7szq0DqyOqgZlL78TXtxDrooEdGi5OWmLjl_gq7ZDUo9M8slshBS8FpFtEelawpdiJykMtshCdlom8f_6yrzUEj7Rs5gtMNjCf_g3i8COkLDBCMYVeh8c7Ja9WidfnvRkcJRHf-2Zl2TmuOyYfr6fW1K_uvnDRoMf1yb0s-ieBqi9IajZn86q5jbFuUZOzOTQcDCBgt0GpU9aPKW96TlW0A7rewkKI2zs8n_gcMe_PBj4eylyw\",\"idTokenPayload\":{\"https://etpmarkets.com/user_metadata\":{\"country\":\"test\",\"username\":\"test\"},\"nickname\":\"test.qa.3\",\"name\":\"test.qa.3@esprow.com\",\"picture\":\"https://s.gravatar.com/avatar/c40156fe681824367e8c5e6fecafd899?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fte.png\",\"updated_at\":\"2022-10-11T22:59:58.829Z\",\"iss\":\"https://auth.etpmarkets.com/\",\"sub\":\"auth0|5fd9f5e25187f50076d310db\",\"aud\":\"L03DZFUIMz5sEaVPUSBhDmt0iVuk4cjU\",\"iat\":1665529199,\"exp\":1665565199,\"at_hash\":\"0lwCy6cWJIioLgNRdbHXeA\",\"nonce\":\"XcLkwKgTsJGdqQs_fBgB.lX9O~oedRhC\"},\"appState\":null,\"refreshToken\":null,\"state\":\"la8wHx6evBDF8foKBmMiGkCK45D5zhSR\",\"expiresIn\":7200,\"tokenType\":\"Bearer\",\"scope\":\"openid profile\"}"
+          "value": "{\"accessToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFqa3dNalF6UlVVelJEY3lOekk0TTBGQlFrRXlNRFkwUVRNd016STNSalF4TkROQk1qSXdPUSJ9.eyJpc3MiOiJodHRwczovL2F1dGguZXRwbWFya2V0cy5jb20vIiwic3ViIjoiYXV0aDB8NWZkOWY1ZTI1MTg3ZjUwMDc2ZDMxMGRiIiwiYXVkIjpbImh0dHBzOi8vZXNwcm93LWdlbXMuYXV0aDAuY29tL2FwaS92Mi8iLCJodHRwczovL2VzcHJvdy1nZW1zLmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2NjU1MzM5OTYsImV4cCI6MTY2NTU0MTE5NiwiYXpwIjoiTDAzRFpGVUlNejVzRWFWUFVTQmhEbXQwaVZ1azRjalUiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIn0.Xc2F1PNGgyIY1qEt-Iik6TXmMiSIHOAiHJuA0gSzn4qgx2Vp86ZdSvS2qFPLm4iVXz76fQhWsufXUtAK19rxAhNhUSbxqNMTqnYZZfWdhb_2tSnczYs2w93E1eEpETdk5HJ6b9f-U58nucV-rDtzMW7t_moWG_6s65JlErPahl34EDrDRMsn3BwpsMMuEQUHBp_py44bTHSfAslMa0eSxawx-fBVLy3Y2I8qS5M0JMBLbmCFHEhWvJEeM4v4GRzTzXa4gd32mEIVAdQXzrCgE-g7Jv8OpoCI-RjCLnWFijRie3riItwHuVSLqy7vmRltutgkcLPYgQM4UaxgtWxfOw\",\"idToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFqa3dNalF6UlVVelJEY3lOekk0TTBGQlFrRXlNRFkwUVRNd016STNSalF4TkROQk1qSXdPUSJ9.eyJodHRwczovL2V0cG1hcmtldHMuY29tL3VzZXJfbWV0YWRhdGEiOnsiY291bnRyeSI6InRlc3QiLCJ1c2VybmFtZSI6InRlc3QifSwibmlja25hbWUiOiJ0ZXN0LnFhLjMiLCJuYW1lIjoidGVzdC5xYS4zQGVzcHJvdy5jb20iLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvYzQwMTU2ZmU2ODE4MjQzNjdlOGM1ZTZmZWNhZmQ4OTk_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZ0ZS5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyMi0xMC0xMlQwMDoxOTo1Ni4xNDRaIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmV0cG1hcmtldHMuY29tLyIsInN1YiI6ImF1dGgwfDVmZDlmNWUyNTE4N2Y1MDA3NmQzMTBkYiIsImF1ZCI6IkwwM0RaRlVJTXo1c0VhVlBVU0JoRG10MGlWdWs0Y2pVIiwiaWF0IjoxNjY1NTMzOTk2LCJleHAiOjE2NjU1Njk5OTYsImF0X2hhc2giOiJPejE5Y2pkOWo5b0U1RGxNUXVndjZ3Iiwibm9uY2UiOiIxU28zOGx0WjBuZ18tdXBmbHVibmF6bWNOYmpNcWN0ZyJ9.srm9y8JXG8dK0-tNSUMkbgg9412F4wFayFUb2vK7KqLmPLMBx3ikc8nNmb1OKC2d-0HD2x_P54svsImNv68RI9t1jZkecuP9z8Y7vyAEcv3QXNTgYv0EYVqwLAE3l5-L3XopU2y1T8AU2KwgyjQ9zAJhXV7bGn1ZECxXB12v9YTRU28AM6Z3GSiklX-K4Fd6tihHwgDCvAT3ogNLFUpp-lDzQT1oawoymy8TzsVBGa97c9Dbvoi2vI2XpUYnIkfQ8YYYtXwKjLCHvKDa4VztOhj3E1KAQ5Ykpf6zSOTKr0OfF61GnnMGlkG2VvmBKG8aEWHM1mlo2AOqkd7KDAG0xw\",\"idTokenPayload\":{\"https://etpmarkets.com/user_metadata\":{\"country\":\"test\",\"username\":\"test\"},\"nickname\":\"test.qa.3\",\"name\":\"test.qa.3@esprow.com\",\"picture\":\"https://s.gravatar.com/avatar/c40156fe681824367e8c5e6fecafd899?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fte.png\",\"updated_at\":\"2022-10-12T00:19:56.144Z\",\"iss\":\"https://auth.etpmarkets.com/\",\"sub\":\"auth0|5fd9f5e25187f50076d310db\",\"aud\":\"L03DZFUIMz5sEaVPUSBhDmt0iVuk4cjU\",\"iat\":1665533996,\"exp\":1665569996,\"at_hash\":\"Oz19cjd9j9oE5DlMQugv6w\",\"nonce\":\"1So38ltZ0ng_-upflubnazmcNbjMqctg\"},\"appState\":null,\"refreshToken\":null,\"state\":\"DKBjfOad.7dCV0bTzJINBrQUZspfTxBz\",\"expiresIn\":7200,\"tokenType\":\"Bearer\",\"scope\":\"openid profile\"}"
         },
         {
           "name": "ETP_GEMS_userData",
-          "value": "{\"https://etpmarkets.com/user_metadata\":{\"country\":\"test\",\"username\":\"test\"},\"nickname\":\"test.qa.3\",\"name\":\"test.qa.3@esprow.com\",\"picture\":\"https://s.gravatar.com/avatar/c40156fe681824367e8c5e6fecafd899?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fte.png\",\"updated_at\":\"2022-10-11T22:59:58.829Z\",\"iss\":\"https://auth.etpmarkets.com/\",\"sub\":\"auth0|5fd9f5e25187f50076d310db\",\"aud\":\"L03DZFUIMz5sEaVPUSBhDmt0iVuk4cjU\",\"iat\":1665529199,\"exp\":1665565199,\"at_hash\":\"0lwCy6cWJIioLgNRdbHXeA\",\"nonce\":\"XcLkwKgTsJGdqQs_fBgB.lX9O~oedRhC\"}"
+          "value": "{\"https://etpmarkets.com/user_metadata\":{\"country\":\"test\",\"username\":\"test\"},\"nickname\":\"test.qa.3\",\"name\":\"test.qa.3@esprow.com\",\"picture\":\"https://s.gravatar.com/avatar/c40156fe681824367e8c5e6fecafd899?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fte.png\",\"updated_at\":\"2022-10-12T00:19:56.144Z\",\"iss\":\"https://auth.etpmarkets.com/\",\"sub\":\"auth0|5fd9f5e25187f50076d310db\",\"aud\":\"L03DZFUIMz5sEaVPUSBhDmt0iVuk4cjU\",\"iat\":1665533996,\"exp\":1665569996,\"at_hash\":\"Oz19cjd9j9oE5DlMQugv6w\",\"nonce\":\"1So38ltZ0ng_-upflubnazmcNbjMqctg\"}"
         }
       ]
     }

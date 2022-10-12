@@ -1,7 +1,7 @@
 import test from '@lib/BaseTest';
-import { ModificationType } from '../lib/enums';
-import { Exchange } from '../lib/types';
-import { testConfig } from '../testconfig';
+import { ModificationType } from '../../lib/enums';
+import { Exchange } from '../../lib/types';
+import { testConfig } from '../../testconfig';
 
 const subscriptionData: Exchange = {
   protocolType: /FIX 4.2/,
@@ -11,7 +11,7 @@ const subscriptionData: Exchange = {
 }
 
 
-test.describe.only('Subscription', () => {
+test.describe('Subscription', () => {
   test.beforeEach(async ({ request, subscriptionPage, page, 
     addExchangePopup, cartPage, checkoutPage,
   successSubscriptionPopup, mainMenu }) => {
@@ -51,7 +51,7 @@ test.describe.only('Subscription', () => {
     await subscriptionPage.navigateToURL();
   })
 
-  test('@e2e Create and pay subscription', async ({ subscriptionPage, addExchangePopup, 
+  test('Create and pay subscription', async ({ subscriptionPage, addExchangePopup, 
     cartPage, checkoutPage, successSubscriptionPopup, mainMenu }) => {
     // * I click "Add exchange"
     await subscriptionPage.clickOnAddExchange();
@@ -157,11 +157,12 @@ test.describe.only('Subscription', () => {
     }
     await subscriptionPage.clickOnAddExchange();
     await addExchangePopup.addExchange(subscriptionData2);
-    const totalMonthly = (subscriptionData2.protocolCost + subscriptionData2.sessionCost) + 
-    (subscriptionData.protocolCost + subscriptionData.sessionCost);
-    await subscriptionPage.verifyMonthlyTotalSubscription(totalMonthly);
-    const currentTotal = subscriptionData2.protocolCost + subscriptionData2.sessionCost
-    await subscriptionPage.verifyCurrentPaymentTotal(currentTotal);
+    await subscriptionPage.clickOnPay();
+    await cartPage.clickOnProceedCheckout();
+    await checkoutPage.clickOnPayAndSubscribe();
+    await successSubscriptionPopup.clickOnGoToExchanges();
+    await mainMenu.openSubscriptionPage();
+    await subscriptionPage.verifySubscriptionsCount(2);
   })
 
   test('Add sessions to PAID subscription', async ({ subscriptionPage, addExchangePopup, 
@@ -273,6 +274,25 @@ test.describe.only('Subscription', () => {
     await subscriptionPage.clickOnPay();
     await attentionPopup.clickOnConfirm();
     await subscriptionPage.verifySubscriptionNotExist();
+  })
+
+  test('Interruption add Exchange', async ({ subscriptionPage, addExchangePopup }) => {
+    const exchangeData: Exchange = {
+      protocolType: /FIX 4.2/,
+      protocolCost: 50,
+      numberOfSessions: 1,
+      sessionCost: 10,
+    }
+    
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.selectProtocolType(exchangeData.protocolType);
+    await addExchangePopup.clickPlusSession(exchangeData.numberOfSessions);
+    await addExchangePopup.clickCrossForClosePopup();
+    await subscriptionPage.clickOnAddExchange();
+    await addExchangePopup.verifyFieldAreEmpty();
+  
+    await addExchangePopup.clickCancelForClosePopup();
+    await addExchangePopup.verifyFieldAreEmpty();
   })
   
 })
